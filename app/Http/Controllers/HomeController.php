@@ -28,6 +28,7 @@ class HomeController extends Controller
         $user_id = Auth::id();
         $user = User::where('id', $user_id)->with('posts', 'posts.comments', 'posts.likes')->first();
         $listaPosts = $user->posts()->get();
+        $listaPosts = $user->posts()->orderBy('created_at', 'desc')->get();
         return view('home', ['listaPosts' => $listaPosts]);
 
     }
