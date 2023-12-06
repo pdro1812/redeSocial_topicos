@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');        //armazena o id do dono do post
             $table->integer('likes_count')->default(0);   //pode armazenar a contagem de likes do post
             $table->timestamps();                         //armazena a data de criação e atualização do post
-
+            
             //crio uma chave estrangeira entre o campo user_id e a tabela users
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

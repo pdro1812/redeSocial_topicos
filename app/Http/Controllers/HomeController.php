@@ -26,10 +26,13 @@ class HomeController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $user = User::where('id', $user_id)->with('posts', 'posts.comments', 'posts.likes')->first();
+        $user = User::where('id', $user_id)->with(
+            'posts', 'posts.comments', 'posts.likes', 
+            'posts.comments.user', 'posts.likes.user', 'posts.photos' )->first();
+        $usuarioLogado = Auth::user();
         $listaPosts = $user->posts()->get();
         $listaPosts = $user->posts()->orderBy('created_at', 'desc')->get();
-        return view('home', ['listaPosts' => $listaPosts]);
+        return view('home', ['listaPosts' => $listaPosts, 'usuarioLogado' => $usuarioLogado]);
 
     }
 }

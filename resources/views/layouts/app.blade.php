@@ -15,6 +15,9 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    @yield('imports')
+    @yield('css')
 </head>
 <body>
     <div id="app">
@@ -24,7 +27,10 @@
                     {{ config('app.home', 'Home') }}
                 </a>
                 <a class="navbar-brand" href="{{ url('/list/user') }}">
-                    {{ config('app.user', 'Users') }}
+                    {{ config('app.user', 'Usuarios') }}
+                </a>
+                <a class="navbar-brand" href="{{ url('/post/create') }}">
+                    {{ config('app.post', 'Novo post') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -79,5 +85,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('scripts')
 </body>
 </html>

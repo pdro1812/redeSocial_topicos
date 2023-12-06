@@ -16,7 +16,7 @@
             @foreach ($user->posts as $umPost)
             
                 <tr>
-                    <td>{{ $umPost->content }}</td>
+                    <td><a href="/post/{{$umPost->id}}">{{ $umPost->content }} </a> </td>
                     <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     {{ $umPost->likes->count() }}Likes</button>
